@@ -1,0 +1,45 @@
+
+// C++ program to count buildings that can see sunlight and the length of the building exposed by sunlight.
+ 
+#include <iostream> 
+using namespace std; 
+  
+// Returns count buildings that can see sunlight 
+int BuildingCounts(int arr[][8], int n) {
+
+  
+     // Initialuze result  (Note that first building always sees sunlight)
+      int count = 1; 
+  
+    // Start traversing element 
+    int current_max_element = arr[0][0]; 
+    for (int i=1; i<n; i++) { 
+    
+       for(int j=0;j<n;j++){
+       	
+       	// If current element is maximum, update maximum and increment count 
+    
+       	if (arr[i][j] > current_max_element) { 
+            count++; 
+            current_max_element=arr[i][j]; 
+        } 
+	  }
+    } 
+  return count; 
+  
+} // End of countBuildings method
+  
+
+int main() 
+{ 
+    int arr[4][8]={{4,0},{4,-5},{7,-5},{7,0}}; 
+    int n = sizeof(arr) / sizeof(arr[1][1]) ;
+    cout << "length of the building exposed to sunlight:::"<<BuildingCounts(arr, n)<<endl; 
+  
+   /* 
+    int arr[8][8] = {{4,0},{4,-5},{7,-5},{7,0},{0.4,-2},{0.4,-5},{2.5,-5},{2.5,-2}}; 
+    int n1 = sizeof(arr) / sizeof(arr[1][1]) ;
+    cout << "length of the building exposed to sunlight:::"<<BuildingCounts(arr, n1)<<endl; 
+    return 0;    */
+
+} //End of main() method
